@@ -1,0 +1,90 @@
+Projeto API Lavie com Laravel
+Passo 01: Criando Migrations
+
+1 - Primeiro Criar as migrations: php artisan migrations:make create_name_table
+
+2-alterar tabela (Caso necessário): php artisan make:migrations alter_name_table
+
+Obs: Processo de excluir tabela serve como algo parecido com o que apaga.
+
+3- Caso necessário para execultar criação de migrations e já deixar criadas no banco de dados deve usar o comando: php artisan migrate
+Digite "migrations" ou termos relacionados na barra de pesquisa e pressione "Enter".
+
+Documentação link : https://laravel.com/docs/10.x/migrations#main-content
+
+Passo 02 Criando controller:
+
+1- Criar o arquivo controller: php artisan make:controller NameController ou
+para deixar tudo meio que criado use isso php artisan make:controller NameController --resouce
+Documentação link:  https://laravel.com/docs/10.x/controllers#introduction
+
+Procure por "Controllers": Role para baixo na tabela de conteúdo ou use o recurso de pesquisa
+do seu navegador para procurar a seção chamada "Controllers" ou "Controladores".
+
+Passo 03: Criando models
+
+
+	1 – Crie o arquivo models e coloque no terminal php artisan make: model name
+
+	Procure na documentação models
+	Incluindo nome do id no postman:
+
+Controller:
+ $service = Service::with('psicologo:id,name,email', 'patient:id,name,email')->get();
+
+Models:
+
+Patient:
+
+    public function services()
+{
+    return $this->hasMany(Service::class, 'patient_id');
+}
+
+Psicologo :
+    public function services()
+{
+    return $this->hasMany(Service::class, 'psicologo_id');
+}
+
+Service:
+
+    public function psicologo()
+{
+    return $this->belongsTo(Psicologo::class, 'psicologo_id');
+}
+
+public function patient()
+{
+    return $this->belongsTo(Patient::class, 'patient_id');
+}
+
+Digite models na documentação
+
+Passo 04: Criando rotas
+Crie as rotas manualmente: Não esquecer de sempre verificar no ApiRoute isso:
+Ex:  Route::namespace('App\Http\Controllers')->group(function () {
+    // Outras rotas podem ser definidas aqui
+
+    require __DIR__.'/psicologo/PsicologoRoutes.php';
+    require __DIR__.'/patient/Patient.php';
+    require __DIR__.'/service/ServiceRoutes.php';
+});
+Para criar manualmente rotas no Laravel, você pode consultar a documentação oficial do Laravel referente às rotas. Aqui está como você pode encontrar informações
+ relevantes na documentação:
+
+Acesse o Site da Documentação: Primeiro, acesse o site oficial de documentação do Laravel
+ em https://laravel.com/docs.
+
+Escolha a Versão Correta: Certifique-se de selecionar a versão do Laravel com a qual você está
+trabalhando. No canto superior direito da página, você verá um seletor de versão. Selecione a
+versão que corresponde à sua instalação do Laravel.
+
+Navegue pela Tabela de Conteúdo: No painel à esquerda da página da documentação,
+ você encontrará uma tabela de conteúdo que lista as seções principais da documentação.
+
+Procure por "Routing": Role para baixo na tabela de conteúdo ou use o recurso de pesquisa
+do seu navegador para procurar a seção chamada "Routing" ou "Rotas."
+
+Clique no Link "Routing": Quando você encontrar a seção de Rotas, clique no link correspondente
+para acessar as informações detalhadas sobre como criar e gerenciar rotas no Laravel.

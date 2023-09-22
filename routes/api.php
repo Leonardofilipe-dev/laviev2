@@ -8,6 +8,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
     // Outras rotas podem ser definidas aqui
 
     require __DIR__.'/users/UsersRoutes.php';
+    require __DIR__.'/patient/PatientRoutes.php';
 
 });
 

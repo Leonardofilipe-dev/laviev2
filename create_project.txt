@@ -1,9 +1,9 @@
 Projeto API Lavie com Laravel
 Passo 01: Criando Migrations
 
-1 - Primeiro Criar as migrations: php artisan migrations:make create_name_table
+1 - Primeiro Criar as migrations: php artisan make:migration create_name_table
 
-2-alterar tabela (Caso necessário): php artisan make:migrations alter_name_table
+2-alterar tabela (Caso necessário): php artisan make:migration alter_name_table
 
 Obs: Processo de excluir tabela serve como algo parecido com o que apaga.
 

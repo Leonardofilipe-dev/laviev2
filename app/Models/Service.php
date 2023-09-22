@@ -20,7 +20,7 @@ class Service extends Model
 
     public function user()
 {
-    return $this->belongsTo(Users::class, 'users_id');
+    return $this->belongsTo(User::class, 'users_id');
 }
 
 public function patient()

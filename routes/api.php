@@ -10,6 +10,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
     require __DIR__.'/users/UsersRoutes.php';
     require __DIR__.'/patient/PatientRoutes.php';
     require __DIR__.'/service/ServiceRoutes.php';
+    require __DIR__.'/auth/AuthRoutes.php';
 
 });
 
